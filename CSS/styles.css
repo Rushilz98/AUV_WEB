@@ -220,12 +220,12 @@ body {
 .section-title {
     font-size: 2.75rem;
     color: var(--secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.0rem;
     position: relative;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
 }
 
-.section-title::after {
+/* .section-title::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -235,7 +235,7 @@ body {
     background: linear-gradient(90deg, var(--secondary), var(--primary));
     border-radius: 2px;
     animation: waveFlow 2s infinite;
-}
+} */
 
 @keyframes waveFlow {
     0% { background-position: 0% 50%; }
