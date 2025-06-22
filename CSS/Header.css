@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
     color: white;
     transition: 0.3s ease;
     z-index: 1000;
@@ -26,26 +26,47 @@
 }
 
 /* Logo */
+
 .logo {
     display: flex;
-    align-items: center;
+    align-items: center; 
     font-weight: 600;
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
 }
 
-.logo-svg {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+.logo-img {
+    width: 65px; 
+    height: auto; 
+    margin: 0 1rem 0 0; 
+    padding: 0; 
     transition: transform 0.3s;
+    vertical-align: middle;
 }
 
-.logo:hover .logo-svg {
-    transform: rotate(15deg);
+.logo:hover .logo-img {
+    transform: rotate(15deg); 
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 50px; 
+        margin-right: 0.75rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        width: 40px; 
+        margin-right: 0.5rem; 
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+}
 /* Menu Layout */
 .nav-menu {
     display: flex;

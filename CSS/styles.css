@@ -606,6 +606,7 @@ body {
     }
 }
 
+/* Sponsor Section */
 .sponsor-section {
     padding: 6rem 0;
     background: linear-gradient(135deg, #0A1A2F 0%, #050A14 100%);
@@ -641,21 +642,18 @@ body {
     border-radius: 2px;
 }
 
-.sponsor-slider {
-    overflow: hidden;
-    position: relative;
-    height: 120px;
-}
-
-.slider-track {
+/* Sponsor Images Container */
+.sponsor-images {
     display: flex;
-    animation: slide 20s linear infinite;
-    position: relative;
+    justify-content: center; 
+    gap: 2rem; 
+    margin: 0 auto;
+    max-width: 1000px; 
+    
 }
 
 .sponsor-item {
-    flex: 0 0 220px;
-    margin: 0 2rem;
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
     opacity: 0.9;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -666,36 +664,41 @@ body {
 }
 
 .sponsor-item img {
-    width: 100%;
-    height: auto;
+    width: 450px; /* Increased image size */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 179, 255, 0.15);
     transition: transform 0.3s ease;
 }
 
-@keyframes slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-    .sponsor-slider {
-        height: 100px;
-    }
-    
-    .sponsor-item {
-        flex: 0 0 180px;
-        margin: 0 1rem;
-    }
-    
     .sponsor-title {
         font-size: 2.25rem;
         margin-bottom: 3rem;
     }
+
+    .sponsor-images {
+        gap: 1.5rem; /* Reduce spacing on smaller screens */
+    }
+
+    .sponsor-item img {
+        width: 200px; /* Slightly smaller image size for tablets */
+    }
 }
 
-/* Team our  */
+@media (max-width: 480px) {
+    .sponsor-images {
+        flex-direction: column; /* Stack images vertically on mobile */
+        align-items: center; /* Center images vertically */
+        gap: 1rem; /* Reduce spacing further */
+    }
 
+    .sponsor-item img {
+        width: 180px; /* Smaller image size for mobile */
+    }
+}
+/* Team Section */
 .team-section {
     padding: 6rem 0;
     background: linear-gradient(135deg, #050A14, #0A1A2F);
@@ -752,31 +755,83 @@ body {
     line-height: 1;
 }
 
-.team-image {
-    margin: 3rem auto;
+/* Slider Styling */
+.slider {
     position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 179, 255, 0.2);
-    transition: transform 0.3s ease;
-    max-width: 800px;
-}
-
-.team-image:hover {
-    transform: scale(1.05);
-}
-
-.team-image img {
     width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
+    max-width: 800px; 
+    margin: 3rem auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 179, 255, 0.2);
 }
 
-.team-image:hover img {
-    transform: scale(1.1);
+.slider-images {
+    position: relative; 
+    width: 100%;
+    height: 400px; 
 }
 
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: scale(1.1); 
+}
+
+.slide.active {
+    opacity: 1; 
+    transform: scale(1); 
+}
+
+/* Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .slide {
+        height: 300px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        height: 200px; 
+    }
+}
+
+/* Call-to-Action Button */
 .team-cta-container {
     margin-top: 2rem;
 }
@@ -798,6 +853,7 @@ body {
     box-shadow: 0 8px 20px rgba(0, 179, 255, 0.4);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .team-heading {
         font-size: 2.5rem;
@@ -808,19 +864,27 @@ body {
         margin: 1rem auto;
     }
     
-    .team-image {
+    .slider {
         margin: 2rem auto;
+    }
+
+    .slide {
+        height: 300px; 
     }
 }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
+@media (max-width: 480px) {
+    .team-heading {
+        font-size: 2rem;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+
+    .team-quote {
+        font-size: 1rem;
+        margin: 1rem auto;
+    }
+
+    .slide {
+        height: 200px; 
     }
 }
 
