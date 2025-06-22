@@ -1,0 +1,225 @@
+:root {
+    --primary: #007BFF;
+    --secondary: #00F0FF;
+    --dark: #0A1A2F;
+    --light: #F5F5F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #050A14;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Keyframes for animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Robot Page Section */
+.robot-page {
+    padding: 4rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 6rem;
+    animation: fadeInUp 1s ease-out both;
+}
+
+.hero-content {
+    flex: 1 1 500px;
+    text-align: left;
+    animation: fadeInUp 1.2s ease-out both;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 1.2rem;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: #B0E0FF;
+}
+
+.hero-image {
+    flex: 1 1 400px;
+    text-align: center;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 179, 255, 0.25);
+    margin-top: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 240, 255, 0.4);
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    text-align: center;
+    margin: 4rem 0 2rem;
+    position: relative;
+    animation: fadeInUp 1s ease-out both;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Specs Table */
+.specs-table {
+    width: 100%;
+    margin: 2rem auto 4rem;
+    border-collapse: collapse;
+    background-color: rgba(10, 26, 47, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.1);
+    animation: fadeInUp 1s ease-out both;
+}
+
+.specs-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.specs-table tr:last-child td {
+    border-bottom: none;
+}
+
+.spec-label {
+    color: var(--secondary);
+    font-weight: 500;
+    width: 30%;
+}
+
+.spec-value {
+    color: #B0E0FF;
+}
+
+/* Features Section */
+.features-section {
+    margin-top: 2rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: rgba(10, 26, 47, 0.85);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 179, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1.2s ease-out both;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 179, 255, 0.25);
+}
+
+.icon-container {
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    fill: var(--secondary);
+}
+
+.feature-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--secondary);
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: #B0E0FF;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content,
+    .hero-image {
+        flex: 1 1 100%;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .specs-table td {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+}

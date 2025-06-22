@@ -1,0 +1,184 @@
+/* styles.css */
+:root {
+    --primary: #007BFF;
+    --secondary: #00F0FF;
+    --dark: #0A1A2F;
+    --light: #F5F5F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Font Reset */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #050A14;
+    color: #fff;
+}
+
+/* Team Page Container */
+.team-page {
+    padding: 6rem 1rem;
+    background: linear-gradient(135deg, #0A1A2F 0%, #050A14 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Section Wrapper */
+.team-section {
+    width: 100%;
+    max-width: 1200px; /* LIMIT WIDTH */
+    margin: 0 auto;
+}
+
+/* Section Title */
+.section-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--secondary);
+    text-align: center;
+    margin-top: 2rem; /* ⬅️ Added this */
+    margin-bottom: 5rem;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+/* Grid Layout */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Card Styling */
+.member-card {
+    background: rgba(10, 26, 47, 0.85);
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    box-shadow: 0 6px 24px rgba(0, 179, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: center;
+}
+
+.member-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 179, 255, 0.25);
+}
+
+/* Image */
+.member-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.8rem;
+    border: 6px solid var(--secondary);
+    box-shadow: 0 6px 18px rgba(0, 179, 255, 0.3);
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Name and Role */
+.member-name {
+    font-family: 'Roboto', sans-serif;
+    color: var(--secondary);
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.member-role {
+    font-family: 'Roboto', sans-serif;
+    color: var(--primary);
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+}
+
+/* Description */
+.member-description {
+    font-family: 'Roboto', sans-serif;
+    color: #B0E0FF;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 240, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    background: var(--secondary);
+    transform: scale(1.15);
+}
+
+.social-icon i {
+    color: var(--dark);
+    font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.3rem;
+        margin-bottom: 3rem;
+    }
+
+    .member-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .member-image {
+        width: 150px;
+        height: 150px;
+    }
+}
