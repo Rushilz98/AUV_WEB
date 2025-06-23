@@ -48,20 +48,23 @@
         <!-- Timeline Section -->
         <section class="timeline-section">
             <div class="timeline-container">
+
                 <!-- Blog Post 1 (Left) -->
                 <div class="timeline-item left">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-card">
+                    <div class="timeline-card" data-modal-id="modal-1">
                         <img src="../Image/blog1.jpg" alt="Blog Image 1" class="timeline-image">
                         <div class="timeline-content">
                             <span class="timeline-date">January 2023</span>
                             <h3 class="timeline-title">First Prototype Launch</h3>
                             <p class="timeline-description">
-                                Our team successfully launched the first prototype of the AUV, marking a significant
-                                milestone in our journey. The initial tests focused on basic maneuverability and depth
-                                control.
+                                To kick off our robotics journey, we built a differential drive ground bot, “Chatur Jr,”
+                                as a low-stakes way to learn motor control and sensor integration. Using salvaged parts
+                                like an Arduino UNO, L293D, and MPU6050 from an old kit, we kept costs minimal. With
+                                help from donated lab gear and budget motors, we got hands-on with DC motors, control
+                                loops, and object detection—an essential first step before diving underwater.
                             </p>
-                            <a href="#" class="timeline-link">Read More</a>
+                            <a href="#" class="timeline-link" data-modal-id="modal-1">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +72,7 @@
                 <!-- Blog Post 2 (Right) -->
                 <div class="timeline-item right">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-card">
+                    <div class="timeline-card" data-modal-id="modal-2">
                         <img src="../Image/blog2.jpg" alt="Blog Image 2" class="timeline-image">
                         <div class="timeline-content">
                             <span class="timeline-date">March 2023</span>
@@ -78,7 +81,7 @@
                                 We conducted deep dive testing at 150 feet, validating the pressure vessel design and
                                 thruster performance. The results exceeded expectations!
                             </p>
-                            <a href="#" class="timeline-link">Read More</a>
+                            <a href="#" class="timeline-link" data-modal-id="modal-2">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +89,7 @@
                 <!-- Blog Post 3 (Left) -->
                 <div class="timeline-item left">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-card">
+                    <div class="timeline-card" data-modal-id="modal-3">
                         <img src="../Image/blog 5.jpg" alt="Blog Image 3" class="timeline-image">
                         <div class="timeline-content">
                             <span class="timeline-date">June 2023</span>
@@ -95,7 +98,7 @@
                                 Implemented an AI-powered navigation system, enabling autonomous obstacle avoidance and
                                 path planning. This upgrade significantly improved mission efficiency.
                             </p>
-                            <a href="#" class="timeline-link">Read More</a>
+                            <a href="#" class="timeline-link" data-modal-id="modal-3">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -103,7 +106,7 @@
                 <!-- Blog Post 4 (Right) -->
                 <div class="timeline-item right">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-card">
+                    <div class="timeline-card" data-modal-id="modal-4">
                         <img src="../Image/blog4.jpg" alt="Blog Image 4" class="timeline-image">
                         <div class="timeline-content">
                             <span class="timeline-date">September 2023</span>
@@ -112,13 +115,27 @@
                                 Our AUV secured the top position in the national robotics competition, showcasing its
                                 advanced capabilities in navigation, data collection, and endurance.
                             </p>
-                            <a href="#" class="timeline-link">Read More</a>
+                            <a href="#" class="timeline-link" data-modal-id="modal-4">Read More</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
+
+        <!-- Modal Overlay -->
+        <div id="modal-overlay">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <img src="" alt="" class="modal-image">
+                <h3 class="modal-title"></h3>
+                <span class="modal-date"></span>
+                <p class="modal-description"></p>
+            </div>
+        </div>
     </section>
+
+    <script src="../Js/blog.js"></script>
     <footer class="footer-section">
         <!-- Wave Shape -->
         <svg class="footer-wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
