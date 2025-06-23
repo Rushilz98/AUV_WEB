@@ -46,7 +46,7 @@ body {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     color: white;
     line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -100,28 +100,7 @@ body {
     transform: translateX(-50%);
 }
 
-.mouse {
-    width: 25px;
-    height: 45px;
-    border: 2px solid white;
-    border-radius: 21px;
-    position: relative;
-    margin: -11px -28px;
-    animation: pulse 2s infinite;
-}
 
-.mouse::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
-    animation: scroll 1.5s infinite;
-}
 
 @keyframes scroll {
     0% { opacity: 1; }
@@ -136,6 +115,77 @@ body {
 }
 
 
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .cta-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        left: 5%;
+        right: 5%;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin: 0.5rem 0 1.5rem;
+    }
+
+    .cta-container {
+        justify-content: center;
+    }
+
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+    }
+
+    .scroll-indicator {
+        display: none; /* Optional: hide scroll indicator on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .bg-image {
+        object-position: center;
+    }
+
+    .mouse {
+        width: 20px;
+        height: 35px;
+        border-radius: 18px;
+    }
+
+    .mouse::before {
+        width: 4px;
+        height: 4px;
+    }
+}
 
 
 /* About Section Styles */
@@ -534,7 +584,7 @@ body {
 
 .subsystem-card {
     background: rgba(10, 26, 47, 0.8);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 179, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -592,7 +642,7 @@ body {
     padding: 0 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 859px) {
     .section-title {
         font-size: 2.5rem;
     }
@@ -1132,6 +1182,188 @@ body {
     .form-group input,
     .form-group textarea {
         padding: 0.8rem;
+    }
+}
+
+/* Default styles you've already written go here... */
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .contact-title {
+        font-size: 2.75rem;
+    }
+
+    .form-title {
+        font-size: 1.8rem;
+    }
+
+    .info-title {
+        font-size: 1.3rem;
+    }
+
+    .info-description {
+        font-size: 0.9rem;
+    }
+
+    .checkbox-group label {
+        flex: 1 1 100%; /* Stack checkboxes vertically on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-container {
+        padding: 0 1rem;
+    }
+
+    .contact-title {
+        font-size: 2.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 2rem;
+    }
+
+    .form-title {
+        font-size: 1.6rem;
+    }
+
+    .form-description {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem;
+    }
+
+    .form-submit {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .contact-info,
+    .contact-form {
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-title {
+        font-size: 1.8rem;
+    }
+
+    .form-title {
+        font-size: 1.4rem;
+    }
+
+    .info-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .info-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .mouse {
+        display: none;
+    }
+
+    .checkbox-group label {
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.85rem;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social-link svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+@media (max-width: 289px) {
+    .contact-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-title {
+        font-size: 1.2rem;
+    }
+
+    .form-description {
+        font-size: 0.8rem;
+    }
+
+    .form-group label {
+        font-size: 0.75rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.75rem;
+        padding: 0.6rem;
+    }
+
+    .checkbox-group label {
+        font-size: 0.7rem;
+        padding-left: 20px;
+    }
+
+    .checkbox-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .info-title {
+        font-size: 1.1rem;
+    }
+
+    .info-description {
+        font-size: 0.75rem;
+    }
+
+    .info-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .info-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .form-submit {
+        font-size: 0.85rem;
+        padding: 0.8rem;
+    }
+
+    .social-link {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-link svg {
+        width: 16px;
+        height: 16px;
     }
 }
 
