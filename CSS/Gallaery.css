@@ -3,6 +3,8 @@
     --secondary: #00F0FF;
     --dark: #0A1A2F;
     --light: #87CEFA;
+    --transition-speed: 0.3s;
+    --shadow-color: rgba(0, 123, 255, 0.2);
 }
 
 * {
@@ -18,13 +20,14 @@ body {
     line-height: 1.6;
 }
 
-/* Hero */
+/* Gallery Page */
 .gallery-page {
     padding: 6rem 0;
     position: relative;
     overflow: hidden;
 }
 
+/* Hero Section */
 .hero-section {
     text-align: center;
     margin-bottom: 4rem;
@@ -35,11 +38,25 @@ body {
     font-size: 3.5rem;
     color: var(--secondary);
     margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
 }
 
 .hero-description {
     font-size: 1.25rem;
-    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #ccc;
 }
 
 /* Filter Bar */
@@ -48,17 +65,20 @@ body {
     justify-content: center;
     gap: 1.5rem;
     margin-bottom: 4rem;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
-    background: rgba(0, 240, 255, 0.2);
+    background: rgba(0, 240, 255, 0.1);
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
     color: var(--light);
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease-in-out;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
 }
 
 .filter-btn.active,
@@ -74,61 +94,58 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 0 2rem;
 }
 
-/* Gallery Item */
+/* Gallery Item - Full Image */
 .gallery-item {
-    height: 250px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 179, 255, 0.15);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 179, 255, 0.1);
+    transition: transform var(--transition-speed) ease;
     animation: fadeInUp 0.8s ease both;
     animation-delay: calc(var(--i) * 0.1s);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .gallery-item:hover {
-    transform: scale(1.03) rotateZ(0.3deg);
+    transform: scale(1.02) rotateZ(0.3deg);
 }
 
-/* Image & Video */
+/* Image & Video - Full Coverage */
 .gallery-item img,
 .gallery-item video {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Fills the box completely */
+    height: auto; /* Auto height to preserve aspect ratio */
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
     border-radius: 15px;
 }
 
-/* Optional hover zoom */
+/* Optional Hover Zoom */
 .gallery-item:hover img,
 .gallery-item:hover video {
     transform: scale(1.1);
 }
 
-/* Overlay */
+/* Overlay - Bottom Slide Up */
 .overlay {
     position: absolute;
-    bottom: 0;
+    bottom: -60px;
     left: 0;
     right: 0;
     backdrop-filter: blur(6px);
-    background: linear-gradient(0deg, rgba(10, 26, 47, 0.75), rgba(10, 26, 47, 0.2));
+    background: linear-gradient(0deg, rgba(10, 26, 47, 0.85), rgba(10, 26, 47, 0.3));
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0 0 15px 15px;
     padding: 1rem;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all var(--transition-speed) ease;
     box-shadow: 0 -5px 15px rgba(0, 179, 255, 0.1);
 }
 
 .gallery-item:hover .overlay {
+    bottom: 0;
     opacity: 1;
 }
 
@@ -137,21 +154,18 @@ body {
     font-size: 1.25rem;
     color: var(--secondary);
     margin-bottom: 0.5rem;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
 }
 
 .overlay-description {
     font-size: 0.9rem;
     color: var(--light);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
 }
 
-.gallery-item:hover .overlay-title {
-    transform: translateY(-3px);
-}
-
+.gallery-item:hover .overlay-title,
 .gallery-item:hover .overlay-description {
-    transform: translateY(-1px);
+    transform: translateY(-3px);
 }
 
 /* Animation */
@@ -166,7 +180,6 @@ body {
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .filter-bar {
         flex-direction: column;
@@ -176,9 +189,26 @@ body {
 
     .gallery-grid {
         grid-template-columns: 1fr;
+        padding: 0 1rem;
     }
 
-    .gallery-item {
-        height: 200px;
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .overlay {
+        padding: 0.75rem;
+    }
+
+    .overlay-title {
+        font-size: 1.1rem;
+    }
+
+    .overlay-description {
+        font-size: 0.85rem;
     }
 }
