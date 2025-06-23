@@ -58,41 +58,97 @@
                             <span class="timeline-date">January 2023</span>
                             <h3 class="timeline-title">First Prototype Launch</h3>
                             <p class="timeline-description">
-                                To kick off our robotics journey, we built a differential drive ground bot, “Chatur Jr,”
-                                as a low-stakes way to learn motor control and sensor integration. Using salvaged parts
-                                like an Arduino UNO, L293D, and MPU6050 from an old kit, we kept costs minimal. With
-                                help from donated lab gear and budget motors, we got hands-on with DC motors, control
-                                loops, and object detection—an essential first step before diving underwater.
+                                How is it that a simple ground bot that felt like it should have taken two days, ended
+                                up taking over a week?
+                                Anyone who's used DC motors will have horror stories of their first encounter with back
+                                EMF. Everyone I have spoken
+                                to who has worked in the trades, other competition teams, electric vehicles, and even
+                                manufacturing, has laughed
+                                with a pained smile at the mention of this beast.
                             </p>
 
                             <!-- Hidden extended content -->
                             <div class="modal-extra-content" style="display: none;">
-                                <h4>Key Learnings:</h4>
-                                <ul>
-                                    <li>Motor calibration using PWM control.</li>
-                                    <li>Implementing basic PID for straight-line driving.</li>
-                                    <li>Using MPU6050 for tilt-based movement correction.</li>
-                                    <li>Object detection using HC-SR04 ultrasonic sensor.</li>
-                                </ul>
-
-                                <h4>Challenges Faced:</h4>
+                                <h2>The Setup</h2>
                                 <p>
-                                    We struggled with inconsistent motor speeds due to different friction levels on each
-                                    wheel.
-                                    Battery voltage drop also affected performance during testing. These issues helped
-                                    us understand
-                                    the importance of robust hardware-software integration early on.
+                                    Before making an underwater vehicle, we wanted to get our feet wet with something
+                                    lower stakes, so we decided to make a differential drive ground bot (which deserves
+                                    its own blog post). This helped our Elec-Mech team learn to use DC motors, program
+                                    Arduinos, and build basic control loops. Meanwhile, the Software team explored
+                                    object detection and low-level interfacing. Our bot, lovingly named "Chatur Jr.",
+                                    became our testbed.
+                                </p>
+                                <p>
+                                    Thanks to our college labs, we had access to an oscilloscope, DC power supply, and
+                                    waveform generator. But we were on a shoestring budget. Most components came from an
+                                    old Arduino kit: an Arduino UNO, the L293D (a basic H-Bridge IC), and an MPU6050
+                                    IMU. We also bought two ESP32s, four cheap DC motors, an MPU9250 (which turned out
+                                    to be a mislabeled MPU6500), and other low-cost parts. Cardboard from a dumpster
+                                    served as our chassis base.
                                 </p>
 
-                                <h4>Tools & Components Used:</h4>
-                                <ul>
-                                    <li>Arduino UNO</li>
-                                    <li>L293D Motor Driver</li>
-                                    <li>MPU6050 Gyro/Accelerometer</li>
-                                    <li>HC-SR04 Ultrasonic Sensor</li>
-                                    <li>DC Motors (Budget/Donated)</li>
-                                    <li>Breadboard & Jumper Cables</li>
-                                </ul>
+                                <h2>First Tests, First Failures</h2>
+                                <p>
+                                    We built a basic chassis intending a semi-circular design, but stability issues
+                                    forced us to reposition the motors on top. Running motors directly from the power
+                                    supply worked, but introducing the L293D H-Bridge caused erratic behavior during
+                                    Arduino resets due to electrical noise. We could temporarily work around this, but
+                                    the real trouble began with the IMU.
+                                </p>
+                                <p>
+                                    Our 6-axis MPU6050 worked fine, but the supposedly 9-axis MPU9250 was actually a
+                                    6-axis MPU6500. Disappointed, we stuck with the MPU6050. When we tried reading the
+                                    IMU and controlling motors from the same Arduino, the IMU crashed every time motors
+                                    ran, occasionally resetting the whole board. We knew we needed a fix fast.
+                                </p>
+
+                                <h2>What Was Wrong?</h2>
+                                <p>
+                                    We suspected two issues: power sag and back EMF. Using an oscilloscope, we noticed
+                                    voltage dips when motors started, likely from inrush current. Adding a bulk
+                                    capacitor and using PWM to ramp motors slowly helped. Back EMF—voltage spikes
+                                    generated by the motors acting as generators—was also likely interfering with the
+                                    IMU.
+                                </p>
+
+                                <h2>Trying Everything</h2>
+                                <p>
+                                    We started with flyback diodes, initially placing one per motor. That failed. Later,
+                                    we added two per motor for unidirectional current control, which helped slightly. We
+                                    didn’t use the full four-diode setup due to limited supplies, but our Arduino
+                                    stopped crashing.
+                                </p>
+                                <p>
+                                    Next came capacitor filtering. We added small capacitors across motor terminals to
+                                    reduce EMI, added rail-to-ground caps to filter noise, and used a bulk capacitor for
+                                    power stability. These improved reliability.
+                                </p>
+                                <p>
+                                    We also tried isolating motor and IMU processing using two ESP32s communicating via
+                                    ESP-NOW, a fast wireless protocol. Theoretically, this split system should isolate
+                                    noise. In reality, both ESP32s still crashed—possibly due to EMF affecting the
+                                    wireless modules—so we abandoned the idea.
+                                </p>
+                                <p>
+                                    Ultimately, we replaced the L293D with the more robust L298N motor driver. It
+                                    offered better current handling, efficiency, and included built-in flyback diodes.
+                                    The voltage drop was lower, and motor behavior stabilized. But we still experienced
+                                    occasional IMU read issues.
+                                </p>
+
+                                <h2>Our Final Setup</h2>
+                                <p>
+                                    Our final solution was definitely overkill: a Raspberry Pi Zero 2W for IMU data
+                                    processing. Linux allowed us to detect and recover from I2C crashes—something a
+                                    basic microcontroller can't handle. However, since the Pi uses 3.3V logic and our
+                                    motor driver needed 5V, we kept the Arduino for PWM control. The Pi and Arduino
+                                    communicated over UART.
+                                </p>
+                                <p>
+                                    This dual-system approach taught us a lot about system design, fault tolerance, and
+                                    hardware limitations. Most importantly—it worked. And that’s more than we could say
+                                    for many of our earlier attempts.
+                                </p>
                             </div>
 
                             <a href="#" class="timeline-link" data-modal-id="modal-1">Read More</a>
