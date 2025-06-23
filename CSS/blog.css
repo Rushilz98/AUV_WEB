@@ -236,24 +236,6 @@ body {
     align-items: center;
 }
 
-.modal-close {
-    position: absolute;
-    top: -3px;
-    right: 9px;
-    font-size: 2.0rem; /* Bigger × */
-    color: var(--secondary);
-    background: none; /* No background circle */
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, color 0.3s ease;
-    z-index: 10;
-}
-
-.modal-close:hover {
-    transform: scale(1.2);
-    color: white;
-}
-
 .modal-content {
     background: #0A1A2F;
     color: white;
@@ -266,14 +248,45 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.modal-close {
+    position: absolute;
+    top: -3px;
+    right: 9px;
+    font-size: 2.0rem;
+    color: var(--secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+    color: white;
 }
 
 .modal-image {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    object-fit: cover; /* Ensures images don't distort */
+    object-fit: cover;
     min-height: 200px;
     max-height: 400px;
     object-position: center;
@@ -299,6 +312,26 @@ body {
     word-wrap: break-word;
 }
 
+.modal-extra-content {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.modal-extra-content h4 {
+    color: var(--secondary);
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.modal-extra-content ul {
+    list-style: disc inside;
+    margin-bottom: 0.8rem;
+    padding-left: 1rem;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 600px) {
     .modal-content {
         padding: 1.5rem;
