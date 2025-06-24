@@ -66,14 +66,14 @@ body {
     border-radius: 5px;
 }
 
-/* Grid Layout */
 .member-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    width: 100%;
+    gap: 3rem;
+}
+.member-card {
+    flex: 0 1 280px; /* Each card is 280px wide but can shrink */
 }
 
 /* Card Styling */
@@ -164,6 +164,12 @@ body {
 .social-icon i {
     color: var(--dark);
     font-size: 18px;
+}
+
+
+
+.member-card:focus {
+    outline: none;
 }
 
 /* Responsive */
