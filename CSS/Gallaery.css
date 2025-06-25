@@ -129,7 +129,7 @@ body {
 }
 
 /* Overlay - Bottom Slide Up */
-.overlay {
+/* .overlay {
     position: absolute;
     bottom: -60px;
     left: 0;
@@ -166,7 +166,7 @@ body {
 .gallery-item:hover .overlay-title,
 .gallery-item:hover .overlay-description {
     transform: translateY(-3px);
-}
+} */
 
 /* Animation */
 @keyframes fadeInUp {
